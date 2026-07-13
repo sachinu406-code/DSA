@@ -1,0 +1,383 @@
+Question 1
+Write a program to Create library management system
+#include <stdio.h>
+#include <string.h>
+
+struct Book
+{
+    int id;
+    char name[50];
+    char author[50];
+    int issued;
+};
+
+int main()
+{
+    struct Book books[100];
+    int n, i, choice, searchId;
+
+    printf("Enter number of books: ");
+    scanf("%d", &n);
+
+    // Add book details
+    for (i = 0; i < n; i++)
+    {
+        printf("\nEnter details of book %d\n", i + 1);
+
+        printf("Book ID: ");
+        scanf("%d", &books[i].id);
+
+        printf("Book Name: ");
+        scanf("%s", books[i].name);
+
+        printf("Author Name: ");
+        scanf("%s", books[i].author);
+
+        books[i].issued = 0;
+    }
+
+    do
+    {
+        printf("\n\n===== Library Management System =====");
+        printf("\n1. Display Books");
+        printf("\n2. Search Book");
+        printf("\n3. Issue Book");
+        printf("\n4. Return Book");
+        printf("\n5. Exit");
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+            case 1:
+                printf("\nBook Details:\n");
+
+                for (i = 0; i < n; i++)
+                {
+                    printf("\nBook ID: %d", books[i].id);
+                    printf("\nBook Name: %s", books[i].name);
+                    printf("\nAuthor: %s", books[i].author);
+
+                    if (books[i].issued)
+                        printf("\nStatus: Issued\n");
+                    else
+                        printf("\nStatus: Available\n");
+                }
+                break;
+
+            case 2:
+                printf("Enter Book ID to search: ");
+                scanf("%d", &searchId);
+
+                for (i = 0; i < n; i++)
+                {
+                    if (books[i].id == searchId)
+                    {
+                        printf("\nBook Found:");
+                        printf("\nID: %d", books[i].id);
+                        printf("\nName: %s", books[i].name);
+                        printf("\nAuthor: %s", books[i].author);
+                        break;
+                    }
+                }
+
+                if (i == n)
+                    printf("Book not found.");
+
+                break;
+
+            case 3:
+                printf("Enter Book ID to issue: ");
+                scanf("%d", &searchId);
+
+                for (i = 0; i < n; i++)
+                {
+                    if (books[i].id == searchId)
+                    {
+                        if (books[i].issued == 0)
+                        {
+                            books[i].issued = 1;
+                            printf("Book issued successfully.");
+                        }
+                        else
+                            printf("Book already issued.");
+
+                        break;
+                    }
+                }
+                break;
+
+            case 4:
+                printf("Enter Book ID to return: ");
+                scanf("%d", &searchId);
+
+                for (i = 0; i < n; i++)
+                {
+                    if (books[i].id == searchId)
+                    {
+                        books[i].issued = 0;
+                        printf("Book returned successfully.");
+                        break;
+                    }
+                }
+                break;
+
+            case 5:
+                printf("Exiting Library System...");
+                break;
+
+            default:
+                printf("Invalid choice.");
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}
+Question 2
+Write a program to Create bank account system
+#include <stdio.h>
+
+struct BankAccount
+{
+    int accountNo;
+    char name[50];
+    float balance;
+};
+
+int main()
+{
+    struct BankAccount acc;
+    int choice;
+    float amount;
+
+    printf("===== Bank Account System =====\n");
+
+    printf("Enter Account Number: ");
+    scanf("%d", &acc.accountNo);
+
+    printf("Enter Account Holder Name: ");
+    scanf("%s", acc.name);
+
+    printf("Enter Initial Balance: ");
+    scanf("%f", &acc.balance);
+
+    do
+    {
+        printf("\n===== MENU =====\n");
+        printf("1. Check Balance\n");
+        printf("2. Deposit Money\n");
+        printf("3. Withdraw Money\n");
+        printf("4. Exit\n");
+
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+            case 1:
+                printf("Current Balance = %.2f\n", acc.balance);
+                break;
+
+            case 2:
+                printf("Enter amount to deposit: ");
+                scanf("%f", &amount);
+
+                if (amount > 0)
+                {
+                    acc.balance += amount;
+                    printf("Deposit successful.\n");
+                    printf("Updated Balance = %.2f\n", acc.balance);
+                }
+                else
+                {
+                    printf("Invalid amount.\n");
+                }
+                break;
+
+            case 3:
+                printf("Enter amount to withdraw: ");
+                scanf("%f", &amount);
+
+                if (amount <= acc.balance && amount > 0)
+                {
+                    acc.balance -= amount;
+                    printf("Withdrawal successful.\n");
+                    printf("Remaining Balance = %.2f\n", acc.balance);
+                }
+                else
+                {
+                    printf("Insufficient balance or invalid amount.\n");
+                }
+                break;
+
+            case 4:
+                printf("Thank you for using the Bank Account System.\n");
+                break;
+
+            default:
+                printf("Invalid choice.\n");
+        }
+
+    } while (choice != 4);
+
+    return 0;
+}
+Question 3
+Write a program to Cre#include <stdio.h>
+
+int main()
+{
+    int totalSeats = 50;
+    int bookedSeats = 0;
+    int choice, seats;
+
+    do
+    {
+        printf("\n===== Ticket Booking System =====\n");
+        printf("1. Book Ticket\n");
+        printf("2. Check Available Seats\n");
+        printf("3. Cancel Ticket\n");
+        printf("4. Exit\n");
+
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+            case 1:
+                printf("Enter number of seats to book: ");
+                scanf("%d", &seats);
+
+                if (seats <= (totalSeats - bookedSeats) && seats > 0)
+                {
+                    bookedSeats += seats;
+                    printf("Ticket booked successfully.\n");
+                }
+                else
+                {
+                    printf("Not enough seats available.\n");
+                }
+                break;
+
+            case 2:
+                printf("Available Seats: %d\n", totalSeats - bookedSeats);
+                printf("Booked Seats: %d\n", bookedSeats);
+                break;
+
+            case 3:
+                printf("Enter number of seats to cancel: ");
+                scanf("%d", &seats);
+
+                if (seats > 0 && seats <= bookedSeats)
+                {
+                    bookedSeats -= seats;
+                    printf("Ticket cancelled successfully.\n");
+                }
+                else
+                {
+                    printf("Invalid number of seats.\n");
+                }
+                break;
+
+            case 4:
+                printf("Thank you for using the Ticket Booking System.\n");
+                break;
+
+            default:
+                printf("Invalid choice.\n");
+        }
+
+    } while (choice != 4);
+
+    return 0;
+}
+Question 4
+Write a program to Create contact management system
+#include <stdio.h>
+#include <string.h>
+
+struct Contact
+{
+    char name[50];
+    char phone[15];
+};
+
+int main()
+{
+    struct Contact contact[100];
+    int n, i, choice;
+    char searchName[50];
+
+    printf("Enter number of contacts: ");
+    scanf("%d", &n);
+
+    // Add contacts
+    for (i = 0; i < n; i++)
+    {
+        printf("\nEnter details of contact %d\n", i + 1);
+
+        printf("Name: ");
+        scanf("%s", contact[i].name);
+
+        printf("Phone Number: ");
+        scanf("%s", contact[i].phone);
+    }
+
+    do
+    {
+        printf("\n===== Contact Management System =====\n");
+        printf("1. Display Contacts\n");
+        printf("2. Search Contact\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+            case 1:
+                printf("\nContact List:\n");
+                for (i = 0; i < n; i++)
+                {
+                    printf("\nName : %s", contact[i].name);
+                    printf("\nPhone: %s\n", contact[i].phone);
+                }
+                break;
+
+            case 2:
+            {
+                int found = 0;
+
+                printf("Enter contact name to search: ");
+                scanf("%s", searchName);
+
+                for (i = 0; i < n; i++)
+                {
+                    if (strcmp(contact[i].name, searchName) == 0)
+                    {
+                        printf("\nContact Found:");
+                        printf("\nName : %s", contact[i].name);
+                        printf("\nPhone: %s\n", contact[i].phone);
+                        found = 1;
+                        break;
+                    }
+                }
+
+                if (!found)
+                    printf("Contact not found.\n");
+
+                break;
+            }
+
+            case 3:
+                printf("Exiting Contact Management System...\n");
+                break;
+
+            default:
+                printf("Invalid choice.\n");
+        }
+
+    } while (choice != 3);
+
+    return 0;
+}
