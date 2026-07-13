@@ -1,0 +1,133 @@
+Question 1
+Write a program to Linear search
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, search, found = 0;
+
+    printf("Enter the size of array: ");
+    scanf("%d", &n);
+
+    // Input array elements
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Element to search
+    printf("Enter element to search: ");
+    scanf("%d", &search);
+
+    // Linear search
+    for (i = 0; i < n; i++) {
+        if (arr[i] == search) {
+            found = 1;
+            break;
+        }
+    }
+
+    if (found)
+        printf("%d found at position %d\n", search, i + 1);
+    else
+        printf("%d not found in array\n", search);
+
+    return 0;
+}
+Question 2
+Write a program to Frequency of an element
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, element, count = 0;
+
+    printf("Enter the size of array: ");
+    scanf("%d", &n);
+
+    // Input array elements
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Element to find frequency
+    printf("Enter element to find frequency: ");
+    scanf("%d", &element);
+
+    // Count frequency
+    for (i = 0; i < n; i++) {
+        if (arr[i] == element)
+            count++;
+    }
+
+    printf("Frequency of %d = %d times\n", element, count);
+
+    return 0;
+}
+Question 3 
+Q55	Write a program to Second largest element.	
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i;
+    int largest, secondLargest;
+
+    printf("Enter the size of array: ");
+    scanf("%d", &n);
+
+    // Input array elements
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Initialize largest and second largest
+    largest = secondLargest = -99999;
+
+    // Find second largest element
+    for (i = 0; i < n; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        }
+        else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    if (secondLargest == -99999)
+        printf("Second largest element does not exist.\n");
+    else
+        printf("Second largest element = %d\n", secondLargest);
+
+    return 0;
+} 
+Question 4
+Write a program to Find duplicates in array
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, j;
+
+    printf("Enter the size of array: ");
+    scanf("%d", &n);
+
+    // Input array elements
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Duplicate elements are:\n");
+
+    // Find duplicates
+    for (i = 0; i < n; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                printf("%d ", arr[i]);
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
