@@ -1,0 +1,160 @@
+Question 1
+Write a program to Find first non-repeating character
+#include <stdio.h>
+
+int main()
+{
+    char str[100];
+    int freq[256] = {0};
+    int i;
+    char result = '\0';
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Count frequency of each character
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        freq[(unsigned char)str[i]]++;
+    }
+
+    // Find first non-repeating character
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] != '\n' && freq[(unsigned char)str[i]] == 1)
+        {
+            result = str[i];
+            break;
+        }
+    }
+
+    if (result != '\0')
+        printf("First non-repeating character = %c", result);
+    else
+        printf("No non-repeating character found.");
+
+    return 0;
+}
+Question 2
+Write a program to Find first repeating character.
+#include <stdio.h>
+
+int main()
+{
+    char str[100];
+    int freq[256] = {0};
+    int i;
+    char result = '\0';
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Find first repeating character
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] != '\n')
+        {
+            freq[(unsigned char)str[i]]++;
+
+            if (freq[(unsigned char)str[i]] == 2)
+            {
+                result = str[i];
+                break;
+            }
+        }
+    }
+
+    if (result != '\0')
+        printf("First repeating character = %c", result);
+    else
+        printf("No repeating character found.");
+
+    return 0;
+}
+Question 3
+Write a program to Check anagram strings
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main()
+{
+    char str1[100], str2[100];
+    int freq1[256] = {0}, freq2[256] = {0};
+    int i, flag = 1;
+
+    printf("Enter first string: ");
+    fgets(str1, sizeof(str1), stdin);
+
+    printf("Enter second string: ");
+    fgets(str2, sizeof(str2), stdin);
+
+    // Count character frequency of first string
+    for (i = 0; str1[i] != '\0'; i++)
+    {
+        if (str1[i] != '\n')
+            freq1[(unsigned char)tolower(str1[i])]++;
+    }
+
+    // Count character frequency of second string
+    for (i = 0; str2[i] != '\0'; i++)
+    {
+        if (str2[i] != '\n')
+            freq2[(unsigned char)tolower(str2[i])]++;
+    }
+
+    // Compare frequencies
+    for (i = 0; i < 256; i++)
+    {
+        if (freq1[i] != freq2[i])
+        {
+            flag = 0;
+            break;
+        }
+    }
+
+    if (flag)
+        printf("The strings are anagrams.");
+    else
+        printf("The strings are not anagrams.");
+
+    return 0;
+}
+Question 4
+Write a program to Find maximum occurring character
+#include <stdio.h>
+
+int main()
+{
+    char str[100];
+    int freq[256] = {0};
+    int i, max = 0;
+    char maxChar = '\0';
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Count frequency of each character
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] != '\n')
+            freq[(unsigned char)str[i]]++;
+    }
+
+    // Find maximum occurring character
+    for (i = 0; i < 256; i++)
+    {
+        if (freq[i] > max)
+        {
+            max = freq[i];
+            maxChar = i;
+        }
+    }
+
+    if (maxChar != '\0')
+        printf("Maximum occurring character = %c\nFrequency = %d", maxChar, max);
+    else
+        printf("No character found.");
+
+    return 0;
+}
