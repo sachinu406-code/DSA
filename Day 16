@@ -1,0 +1,139 @@
+Question 1
+Write a program to Find missing number in array.
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i;
+    int sum = 0, total;
+
+    printf("Enter the size of array: ");
+    scanf("%d", &n);
+
+    // Input array elements
+    printf("Enter %d elements:\n", n - 1);
+    for (i = 0; i < n - 1; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Sum of first n natural numbers
+    total = n * (n + 1) / 2;
+
+    // Sum of array elements
+    for (i = 0; i < n - 1; i++) {
+        sum = sum + arr[i];
+    }
+
+    // Missing number
+    printf("Missing number = %d\n", total - sum);
+
+    return 0;
+}
+Question 2
+Write a program to Find maximum frequency element
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, j;
+    int maxCount = 0, count, maxElement;
+
+    printf("Enter the size of array: ");
+    scanf("%d", &n);
+
+    // Input array elements
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Find maximum frequency element
+    for (i = 0; i < n; i++) {
+        count = 1;
+
+        for (j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j])
+                count++;
+        }
+
+        if (count > maxCount) {
+            maxCount = count;
+            maxElement = arr[i];
+        }
+    }
+
+    printf("Maximum frequency element = %d\n", maxElement);
+    printf("Frequency = %d times\n", maxCount);
+
+    return 0;
+} 
+Questtion 3
+Write a program to Find pair with given sum.
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, j, sum, found = 0;
+
+    printf("Enter the size of array: ");
+    scanf("%d", &n);
+
+    // Input array elements
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Input required sum
+    printf("Enter the required sum: ");
+    scanf("%d", &sum);
+
+    // Find pair with given sum
+    for (i = 0; i < n; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (arr[i] + arr[j] == sum) {
+                printf("Pair found: %d and %d\n", arr[i], arr[j]);
+                found = 1;
+            }
+        }
+    }
+
+    if (found == 0)
+        printf("No pair found with given sum.\n");
+
+    return 0;
+} 
+Question 4 
+Write a program to Remove duplicates from array.
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, j, k;
+
+    printf("Enter the size of array: ");
+    scanf("%d", &n);
+
+    // Input array elements
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Remove duplicates
+    for (i = 0; i < n; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                for (k = j; k < n - 1; k++) {
+                    arr[k] = arr[k + 1];
+                }
+                n--;
+                j--;
+            }
+        }
+    }
+
+    // Display array after removing duplicates
+    printf("Array after removing duplicates:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+} 
