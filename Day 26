@@ -1,0 +1,218 @@
+Question 1
+Write a program to Create number guessing game
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    int number, guess, attempts = 0;
+
+    // Generate random number between 1 and 100
+    srand(time(0));
+    number = rand() % 100 + 1;
+
+    printf("Number Guessing Game\n");
+    printf("Guess a number between 1 and 100\n");
+
+    do
+    {
+        printf("Enter your guess: ");
+        scanf("%d", &guess);
+
+        attempts++;
+
+        if (guess > number)
+        {
+            printf("Too high! Try again.\n");
+        }
+        else if (guess < number)
+        {
+            printf("Too low! Try again.\n");
+        }
+        else
+        {
+            printf("Congratulations! You guessed the correct number.\n");
+            printf("Number of attempts = %d", attempts);
+        }
+
+    } while (guess != number);
+
+    return 0;
+}
+Question 2
+Write a program to Create voting eligibility system
+#include <stdio.h>
+
+int main()
+{
+    int age;
+
+    printf("Enter your age: ");
+    scanf("%d", &age);
+
+    if (age >= 18)
+    {
+        printf("You are eligible to vote.");
+    }
+    else
+    {
+        printf("You are not eligible to vote.");
+    }
+
+    return 0;
+}
+Question 3
+Write a program to Create ATM simulation
+#include <stdio.h>
+
+int main()
+{
+    int pin = 1234, enteredPin;
+    int choice;
+    float balance = 5000, amount;
+
+    printf("Enter your PIN: ");
+    scanf("%d", &enteredPin);
+
+    if (enteredPin != pin)
+    {
+        printf("Incorrect PIN.");
+        return 0;
+    }
+
+    do
+    {
+        printf("\n\nATM Menu");
+        printf("\n1. Check Balance");
+        printf("\n2. Deposit Money");
+        printf("\n3. Withdraw Money");
+        printf("\n4. Exit");
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+            case 1:
+                printf("Current balance = %.2f", balance);
+                break;
+
+            case 2:
+                printf("Enter amount to deposit: ");
+                scanf("%f", &amount);
+
+                if (amount > 0)
+                {
+                    balance += amount;
+                    printf("Amount deposited successfully.");
+                }
+                else
+                {
+                    printf("Invalid amount.");
+                }
+                break;
+
+            case 3:
+                printf("Enter amount to withdraw: ");
+                scanf("%f", &amount);
+
+                if (amount <= balance && amount > 0)
+                {
+                    balance -= amount;
+                    printf("Please collect your cash.");
+                }
+                else
+                {
+                    printf("Insufficient balance or invalid amount.");
+                }
+                break;
+
+            case 4:
+                printf("Thank you for using ATM.");
+                break;
+
+            default:
+                printf("Invalid choice.");
+        }
+
+    } while (choice != 4);
+
+    return 0;
+}
+Question 4
+Write a program to Create quiz application
+#include <stdio.h>
+
+int main()
+{
+    int answer, score = 0;
+
+    printf("===== Quiz Application =====\n");
+
+    // Question 1
+    printf("\n1. Which language is used for system programming?\n");
+    printf("1. HTML\n2. C\n3. Python\n4. Java\n");
+    printf("Enter your answer: ");
+    scanf("%d", &answer);
+
+    if (answer == 2)
+    {
+        score++;
+    }
+
+    // Question 2
+    printf("\n2. What is the size of int data type in C (usually)?\n");
+    printf("1. 2 bytes\n2. 4 bytes\n3. 8 bytes\n4. 16 bytes\n");
+    printf("Enter your answer: ");
+    scanf("%d", &answer);
+
+    if (answer == 2)
+    {
+        score++;
+    }
+
+    // Question 3
+    printf("\n3. Which symbol is used to end a statement in C?\n");
+    printf("1. :\n2. ;\n3. .\n4. ,\n");
+    printf("Enter your answer: ");
+    scanf("%d", &answer);
+
+    if (answer == 2)
+    {
+        score++;
+    }
+
+    // Question 4
+    printf("\n4. Which function is used to display output in C?\n");
+    printf("1. scanf()\n2. printf()\n3. input()\n4. display()\n");
+    printf("Enter your answer: ");
+    scanf("%d", &answer);
+
+    if (answer == 2)
+    {
+        score++;
+    }
+
+    // Question 5
+    printf("\n5. Which loop executes at least once?\n");
+    printf("1. for loop\n2. while loop\n3. do-while loop\n4. nested loop\n");
+    printf("Enter your answer: ");
+    scanf("%d", &answer);
+
+    if (answer == 3)
+    {
+        score++;
+    }
+
+    printf("\n===== Quiz Result =====\n");
+    printf("Your score = %d/5\n", score);
+
+    if (score == 5)
+        printf("Excellent!");
+    else if (score >= 3)
+        printf("Good job!");
+    else
+        printf("Keep practicing!");
+
+    return 0;
+}
