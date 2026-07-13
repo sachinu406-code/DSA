@@ -1,0 +1,95 @@
+Question 1
+Write a program to Convert decimal to binary
+#include <stdio.h>
+
+int main() {
+    int num, binary[32], i = 0;
+
+    printf("Enter a decimal number: ");
+    scanf("%d", &num);
+
+    if (num == 0) {
+        printf("Binary = 0\n");
+        return 0;
+    }
+
+    while (num > 0) {
+        binary[i] = num % 2;
+        num = num / 2;
+        i++;
+    }
+
+    printf("Binary = ");
+
+    for (i = i - 1; i >= 0; i--) {
+        printf("%d", binary[i]);
+    }
+
+    printf("\n");
+
+    return 0;
+}
+Question 2
+Write a program to Convert binary to decimal
+#include <stdio.h>
+
+int main() {
+    int binary, decimal = 0, base = 1, remainder;
+
+    printf("Enter a binary number: ");
+    scanf("%d", &binary);
+
+    while (binary > 0) {
+        remainder = binary % 10;
+        decimal = decimal + remainder * base;
+        binary = binary / 10;
+        base = base * 2;
+    }
+
+    printf("Decimal = %d\n", decimal);
+
+    return 0;
+}
+Question 3
+Write a program to Count set bits in a number
+#include <stdio.h>
+
+int main() {
+    int num, count = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    while (num > 0) {
+        if (num % 2 == 1)
+            count++;
+
+        num = num / 2;
+    }
+
+    printf("Number of set bits = %d\n", count);
+
+    return 0;
+}
+Question 4
+Write a program to Find x^n without pow(). 
+#include <stdio.h>
+
+int main() {
+    int x, n, i;
+    long long result = 1;
+
+    printf("Enter the base (x): ");
+    scanf("%d", &x);
+
+    printf("Enter the exponent (n): ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        result = result * x;
+    }
+
+    printf("%d^%d = %lld\n", x, n, result);
+
+    return 0;
+} 
