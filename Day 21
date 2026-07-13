@@ -1,0 +1,104 @@
+Question 1
+Write a program to Find string length without strlen()
+#include <stdio.h>
+
+int main()
+{
+    char str[100];
+    int length = 0;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    while (str[length] != '\0')
+    {
+        length++;
+    }
+
+    printf("Length of string = %d", length);
+
+    return 0;
+}
+Question 2
+Write a program to Reverse a string
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str[100], temp;
+    int i, length;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    length = strlen(str);
+
+    // Reversing the string
+    for (i = 0; i < length / 2; i++)
+    {
+        temp = str[i];
+        str[i] = str[length - i - 1];
+        str[length - i - 1] = temp;
+    }
+
+    printf("Reversed string = %s", str);
+
+    return 0;
+}
+Question 3
+Write a program to Count vowels and consonants
+#include <stdio.h>
+#include <ctype.h>
+
+int main()
+{
+    char str[100];
+    int vowels = 0, consonants = 0;
+    int i;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        char ch = tolower(str[i]);
+
+        if (ch >= 'a' && ch <= 'z')
+        {
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+                vowels++;
+            else
+                consonants++;
+        }
+    }
+
+    printf("Number of vowels = %d\n", vowels);
+    printf("Number of consonants = %d", consonants);
+
+    return 0;
+}
+Question 4 
+Write a program to Convert lowercase to uppercase
+#include <stdio.h>
+
+int main()
+{
+    char str[100];
+    int i;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] >= 'a' && str[i] <= 'z')
+        {
+            str[i] = str[i] - 32;
+        }
+    }
+
+    printf("Uppercase string = %s", str);
+
+    return 0;
+}
